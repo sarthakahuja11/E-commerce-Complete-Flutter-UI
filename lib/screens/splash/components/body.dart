@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/size_config.dart';
 
@@ -16,16 +17,16 @@ class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Tokoto, Let’s shop!",
+      "text": "Welcome to M&S - Percy's adventure!!",
       "image": "assets/images/splash_1.png"
     },
     {
       "text":
-          "We help people conect with store \naround United State of America",
+          "Solve the riddles and \nsearch the product in the M&S app!",
       "image": "assets/images/splash_2.png"
     },
     {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
+      "text": "Unjumble the letters hints \n to help Percy crack the Promocode!",
       "image": "assets/images/splash_3.png"
     },
   ];
@@ -37,7 +38,7 @@ class _BodyState extends State<Body> {
         child: Column(
           children: <Widget>[
             Expanded(
-              flex: 3,
+              flex: 5,
               child: PageView.builder(
                 onPageChanged: (value) {
                   setState(() {
@@ -46,7 +47,7 @@ class _BodyState extends State<Body> {
                 },
                 itemCount: splashData.length,
                 itemBuilder: (context, index) => SplashContent(
-                  image: splashData[index]["image"],
+                  image: splashData[index]["image"] ,
                   text: splashData[index]['text'],
                 ),
               ),
@@ -66,14 +67,14 @@ class _BodyState extends State<Body> {
                         (index) => buildDot(index: index),
                       ),
                     ),
-                    Spacer(flex: 3),
+                    Spacer(flex: 10),
                     DefaultButton(
-                      text: "Continue",
+                      text: "Skip Tutorial",
                       press: () {
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                        Navigator.pushNamed(context, HomeScreen.routeName);
                       },
                     ),
-                    Spacer(),
+                    Spacer(flex: 40),
                   ],
                 ),
               ),
@@ -87,7 +88,7 @@ class _BodyState extends State<Body> {
   AnimatedContainer buildDot({int? index}) {
     return AnimatedContainer(
       duration: kAnimationDuration,
-      margin: EdgeInsets.only(right: 5),
+      margin: EdgeInsets.only(top: 50, right: 5),
       height: 6,
       width: currentPage == index ? 20 : 6,
       decoration: BoxDecoration(
